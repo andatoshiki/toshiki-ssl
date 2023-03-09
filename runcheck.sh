@@ -29,7 +29,7 @@ expire_arr=(${expire_GMT})
 
 # 调用子脚本，修改时间、日期
 chmod +x ./modify-time-format.sh
-bash ./modify-time-format.sh
+source ./modify-time-format.sh
 
 start=${start_UTC}
 expire=${expire_UTC}
