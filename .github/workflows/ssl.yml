@@ -31,6 +31,7 @@ job:
 
       - name: Upload built SSL JSON metadata artifact for download
         uses: actions/upload-artifact@v3
+        with:
           name: ssl-status-metadata
           path: dist/ct.json
           if-no-files-found: ignore
