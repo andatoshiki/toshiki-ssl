@@ -10,7 +10,7 @@ on:
   # option to manually trigger workflow on action page for dev purposes
   workflow_dispatch:
 
-job:
+jobs:
   checkssl:
     runs-on: ubuntu-latest
 
