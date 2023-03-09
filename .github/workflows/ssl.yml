@@ -27,7 +27,7 @@ jobs:
           chmod +x checker.sh
           bash ./checker.sh ${{ secrets.SITE_LIST }}
           mkdir ./dist
-          cp -rf ./output/ct.json ../dist/ct.json
+          cp -rf ./output/ct.json ./dist/ct.json
 
       - name: Upload built SSL JSON metadata artifact for download
         uses: actions/upload-artifact@v3
