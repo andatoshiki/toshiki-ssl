@@ -21,7 +21,9 @@ jobs:
           ref: master
     
       - name: Build SSL metadata in and export into JSON
+        # export timezone into desired location/area
         run: |
+          export TZ='${{ secrets.TIME_ZONE }}'
           chmod +x checker.sh
           bash ./checker.sh ${{ secrets.SITE_LIST }}
           mkdir ./dist
