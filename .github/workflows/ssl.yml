@@ -1,0 +1,36 @@
+name: Build SSL status metadata in JSON file
+
+on:
+  push:
+    branches:
+      - master
+  schedule: 
+      # action will run at 8 am on daily bases
+      - cron: "0 8 * * *"
+  # option to manually trigger workflow on action page for dev purposes
+  workflow_dispatch:
+
+job:
+  checkssl:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: master
+    
+      - name: Build SSL metadata in and export into JSON
+        # export timezone into desired location/area
+        run: |
+          export TZ='${{ secrets.TIME_ZONE }}'
+          chmod +x checker.sh
+          bash ./checker.sh ${{ secrets.SITE_LIST }}
+          mkdir ./dist
+          cp -rf ./output/ct.json ../dist/ct.json
+
+      - name: Upload built SSL JSON metadata artifact for download
+        uses: actions/upload-artifact@v3
+          name: ssl-status-metadata
+          path: dist/ct.json
+          if-no-files-found: ignore

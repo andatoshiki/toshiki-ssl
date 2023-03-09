@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - "18"
+dist: output
+install:
+  - chmod +x ./checker.sh
+script:
+  - bash ./checker.sh www.toshiki.dev proxypool.toshiki.dev api.toshiki.dev archer.toshiki.dev r2.toshiki.dev cdnjs.toshiki.dev note.toshiki.dev count.toshiki.dev coverview.toshiki.dev e5.toshiki.dev gallery.toshiki.dev live2d.toshiki.dev umami.toshiki.dev sponsor.toshiki.dev status.toshiki.dev uptimeflare.toshiki.dev ac.toshiki.top
